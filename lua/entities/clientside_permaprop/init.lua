@@ -22,6 +22,7 @@ concommand.Add( "nuke_clientside_permaprops", function( ply, cmd, args )
     net.Start("ClientPerma:ClearAll")
     net.Broadcast()
     print("[Clientside Permaprops] CLIENTSIDE PERMAPROPS DATABASE CLEARED!")
+    sql.Query("CREATE TABLE IF NOT EXISTS clientside_permaprops( posx DOUBLE , posy DOUBLE , posz DOUBLE , angx DOUBLE , angy DOUBLE , angz DOUBLE , mdl TEXT , prop_skin INTEGER , mat TEXT )" )
 end )
 
 net.Receive("ClientPerma:RemoveProp", function(len, ply)
